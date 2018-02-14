@@ -1,0 +1,11 @@
+!cc = |> gcc $(CFLAGS) -c %f -o %o |> $(BUILD_DIR)/%B.o
+
+BUILD_DIR = build
+CFLAGS = -Wall -O2 -std=c++11
+LIBS = -lstdc++ -lboost_thread -lboost_system -lssl -lpthread -ltcmalloc
+
+SOURCE_FILES = src/main.cpp
+
+: |> ./version_generation.sh |> src/version.hpp
+: foreach $(SOURCE_FILES) | src/version.hpp |> !cc |>
+: $(BUILD_DIR)/*.o |> gcc %f -o %o $(LIBS) |> $(BUILD_DIR)/server
