@@ -3,9 +3,9 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'tup init'
-        sh 'tup generate ${env.WORKSPACE}/build.sh'
-        sh '${env.WORKSPACE}/build.sh'
+        sh "tup init"
+        sh "tup generate ${env.WORKSPACE}/build.sh"
+        sh "${env.WORKSPACE}/build.sh"
       }
     }
     stage('Checks') {
