@@ -17,7 +17,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        echo "TODO Test - add test compilation to tupfile and here execute test exec:
+        echo "TODO Test - add test compilation to tupfile and here execute test exec"
         echo "TODO Execute xUnit publisher etc."
       }
     }
