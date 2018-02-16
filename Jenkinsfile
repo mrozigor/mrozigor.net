@@ -32,8 +32,5 @@ pipeline {
     always {
       cleanWs()
     }
-    failure {
-      mail to: mrozigor@wp.pl, subject: 'mrozigor.net build failed'
-    }
   }
 }
