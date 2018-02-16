@@ -25,7 +25,7 @@ pipeline {
       steps {
         sh "tar --xz -cvf server_${env.BUILD_NUMBER}.tar.xz -C ${env.WORKSPACE}/build server"
         sshagent(credentials: ['b7ba5947-997f-4a76-a691-09cef8cf2fea']) {
-          #sh "scp ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz mrozigor@s6.mydevil.net:/home/mrozigor/domains/mrozigor.net/builds"
+          //sh "scp ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz mrozigor@s6.mydevil.net:/home/mrozigor/domains/mrozigor.net/builds"
         }
       }
     }
