@@ -24,7 +24,7 @@ pipeline {
     stage('Archive') {
       steps {
         sh "tar --xz -cvf ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz -C ${env.WORKSPACE}/build server"
-        sh "cp ${env.WORKSPACE}/server_${}.tar.xz /home/mrozigor/domains/mrozigor.net/build"
+        sh "cp ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz /home/mrozigor/domains/mrozigor.net/build"
         //sshagent(credentials: ['b7ba5947-997f-4a76-a691-09cef8cf2fea']) {
           //sh "scp ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz mrozigor@s6.mydevil.net:/home/mrozigor/domains/mrozigor.net/builds"
         //}
