@@ -11,7 +11,7 @@ pipeline {
     stage('Checks') {
       steps {
         sh "cppcheck --enable=all --inconclusive --template="{file},{line},{severity},{id},{message}" ${env.WORKSPACE}/src 2> ${env.WORKSPACE}/cppcheck.txt"
-        [$class: 'WarningsPublisher', parserConfigurations: [[parserName: 'cpp', pattern: "${env.WORKSPACE}/cppcheck.txt"]], usePreviousBuildAsReference: true]
+        step([$class: 'WarningsPublisher', parserConfigurations: [[parserName: 'cpp', pattern: "${env.WORKSPACE}/cppcheck.txt"]], usePreviousBuildAsReference: true])
       }
     }
     stage('Test') {
