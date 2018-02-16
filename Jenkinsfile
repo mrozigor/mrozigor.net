@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+        sh 'tup init'
         sh 'tup generate build.sh'
         sh 'build.sh'
       }
