@@ -27,10 +27,13 @@ pipeline {
         echo 'Deploy'
       }
     }
-    post {
-      always {
-        cleanWs()
-      }
+  }
+  post {
+    always {
+      cleanWs()
+    }
+    failure {
+      mail to: mrozigor@wp.pl, subject: 'mrozigor.net build failed'
     }
   }
 }
