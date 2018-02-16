@@ -2,7 +2,7 @@
 
 BUILD_DIR = build
 CFLAGS = -Wall -O2 -std=c++11
-LIBS = -lstdc++ -lboost_thread -lboost_system -lssl -lpthread -ltcmalloc
+LIBS = -lstdc++ -lboost_thread -lboost_system -lssl -lpthread #-ltcmalloc
 
 SOURCE_FILES = src/main.cpp
 
