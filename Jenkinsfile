@@ -23,15 +23,15 @@ pipeline {
     }
     stage('Archive') {
       steps {
-        sh "tar --xz -cvf server_${env.BUILD_NUMBER}.tar.xz ${env.WORKSPACE}/build/server"
-        sshagent(credentials: ['mrozigor']) {
+        sh "tar --xz -cvf server_${env.BUILD_NUMBER}.tar.xz -C ${env.WORKSPACE}/build server"
+        sshagent(credentials: ['b7ba5947-997f-4a76-a691-09cef8cf2fea']) {
           sh "scp ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz mrozigor@s6.mydevil.net:/home/mrozigor/domains/mrozigor.net/builds"
         }
       }
     }
     stage('Deploy') {
       steps {
-        sshagent(credentials: ['mrozigor']) {
+        sshagent(credentials: ['b7ba5947-997f-4a76-a691-09cef8cf2fea']) {
           sh "ssh mrozigor@s6.mydevil.net \"kill `cat /home/mrozigor/.mrozigor_net.pid`\""
           sh "ssh mrozigor@s6.mydevil.net \"tar --x -xvf /home/mrozigor/domains/mrozigor.net/builds/server_${env.BUILD_NUMBER}/tar.xz -C /home/mrozigor/domains/mrozigor.net\""
           sh "ssh mrozigor@s6.mydevil.net \"/home/mrozigor/check_mrozigor_net_running\""
