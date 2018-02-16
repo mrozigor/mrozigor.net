@@ -10,7 +10,7 @@ pipeline {
     }
     stage('Checks') {
       steps {
-        sh "cppcheck --enable=all --inconclusive --template=\"{file},{line},{severity},{id},{message}\" ${env.WORKSPACE}/src 2> ${env.WORKSPACE}/cppcheck.txt"
+        sh "cppcheck --suppress=missingInclude --suppress=*:${env.WORKSPACE}/src/crow.hpp --library=${env.WORKSPACE}/cppcheck.cfg --enable=all --inconclusive --template="{file},{line},{severity},{id},{message}" src 2> cppcheck.txt"
         step([$class: 'WarningsPublisher', parserConfigurations: [[parserName: 'cpp', pattern: "${env.WORKSPACE}/cppcheck.txt"]], usePreviousBuildAsReference: true])
       }
     }
