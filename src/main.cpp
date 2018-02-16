@@ -9,5 +9,5 @@ int main()
       return "WiP - " + mrozigor::ApplicationVersion::get();
     });
 
-  app.port(18080).multithreaded().run();
+  app.port(9449).multithreaded().run();
 }

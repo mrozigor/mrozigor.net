@@ -12,21 +12,30 @@ pipeline {
       steps {
         sh "cppcheck --library=${env.WORKSPACE}/std.cfg --suppress=missingInclude --suppress=*:${env.WORKSPACE}/src/crow.hpp --enable=all --inconclusive --template=\"{file},{line},{severity},{id},{message}\" ${env.WORKSPACE}/src 2> cppcheck.txt"
         step([$class: 'WarningsPublisher', parserConfigurations: [[parserName: 'cpp', pattern: "cppcheck.txt"]], usePreviousBuildAsReference: true])
+        echo "TODO Add Valgrind plugin assoon as it will be available in pipeline"
       }
     }
     stage('Test') {
       steps {
-        echo 'Test - add test compilation to tupfile and here execute test exec'
+        echo "TODO Test - add test compilation to tupfile and here execute test exec:
+        echo "TODO Execute xUnit publisher etc."
       }
     }
     stage('Archive') {
       steps {
-        echo 'Archive'
+        sh "tar --xz -cvf server_${env.BUILD_NUMBER}.tar.xz ${env.WORKSPACE}/build/server"
+        sshagent(credentials: ['mrozigor']) {
+          sh "scp ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz mrozigor@s6.mydevil.net:/home/mrozigor/domains/mrozigor.net/builds"
+        }
       }
     }
     stage('Deploy') {
       steps {
-        echo 'Deploy'
+        sshagent(credentials: ['mrozigor']) {
+          sh "ssh mrozigor@s6.mydevil.net \"kill `cat /home/mrozigor/.mrozigor_net.pid`\""
+          sh "ssh mrozigor@s6.mydevil.net \"tar --x -xvf /home/mrozigor/domains/mrozigor.net/builds/server_${env.BUILD_NUMBER}/tar.xz -C /home/mrozigor/domains/mrozigor.net\""
+          sh "ssh mrozigor@s6.mydevil.net \"/home/mrozigor/check_mrozigor_net_running\""
+        }
       }
     }
   }
