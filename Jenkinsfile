@@ -32,10 +32,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        try {
-          sh "kill `cat /home/mrozigor/.mrozigor_net.pid`"
-        } catch (error) {
-        }
+        sh "kill `cat /home/mrozigor/.mrozigor_net.pid`" || true
         sh "cp ${env.WORKSPACE}/build/server /home/mrozigor/domains/mrozigor.net/"
         sh "/home/mrozigor/check_mrozigor_net_running"
         //sshagent(credentials: ['b7ba5947-997f-4a76-a691-09cef8cf2fea']) {
