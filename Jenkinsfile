@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Archive') {
       steps {
-        sh "tar --xz -cvf ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz -C ${env.WORKSPACE}/build server"
+        sh "tar --xz -cvf server_${env.BUILD_NUMBER}.tar.xz -C ${env.WORKSPACE}/build server"
         sh "cp ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz /home/mrozigor/domains/mrozigor.net/builds"
       }
     }
