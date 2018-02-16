@@ -34,7 +34,7 @@ pipeline {
       steps {
         try {
           sh "kill `cat /home/mrozigor/.mrozigor_net.pid`"
-        } catch () {
+        } catch (error) {
         }
         sh "cp ${env.WORKSPACE}/build/server /home/mrozigor/domains/mrozigor.net/"
         sh "/home/mrozigor/check_mrozigor_net_running"
