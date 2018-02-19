@@ -1,0 +1,6 @@
+<footer class="footer">
+    <hr />
+    <div class="container">
+        {{#version}}<p class="text-muted">{{version}}</p>{{/version}}
+    </div>
+</footer>

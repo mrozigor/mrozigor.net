@@ -1,0 +1,11 @@
+<head>
+    <title>{{#title}}{{title}} - mrozigor.net{{/title}}{{^title}}mrozigor.net{{/title}}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {{#description}}<meta name="description" content="{{description}}">{{/description}}
+    {{#keywords}}<meta name="keywords" content="{{keywords}}">{{/keywords}}
+    {{#author}}<meta name="author" content="{{author}}">{{/author}}
+
+    <link rel="stylesheet" href="css/pure-min.css" /> <!--TODO Add URL class to handle full urls-->
+    <link rel="stylesheet" href="css/grids-responsive-min.css" />
+</head>

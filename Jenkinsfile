@@ -23,7 +23,7 @@ pipeline {
     }
     stage('Archive') {
       steps {
-        sh "tar --xz -cvf server_${env.BUILD_NUMBER}.tar.xz -C ${env.WORKSPACE}/build server"
+        sh "tar --xz -cvf server_${env.BUILD_NUMBER}.tar.xz -C ${env.WORKSPACE}/build server views"
         sh "cp ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz /home/mrozigor/domains/mrozigor.net/builds"
       }
     }
@@ -31,6 +31,7 @@ pipeline {
       steps {
         sh "kill `cat /home/mrozigor/.mrozigor_net.pid` || true"
         sh "cp ${env.WORKSPACE}/build/server /home/mrozigor/domains/mrozigor.net/"
+        sh "cp -r ${env.WORKSPACE}/build/views /home/mrozigor/domains/mrozigor.net/"
         sh "/home/mrozigor/check_mrozigor_net_running"
       }
     }
