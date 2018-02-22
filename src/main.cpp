@@ -13,12 +13,12 @@ int main()
       context["description"] = "Strona prywatna Igora Mroza.";
       context["author"] = "Igor Mróz";
       context["keywords"] = "";
+      context["version"] = mrozigor::ApplicationVersion::get();
       context["head"] = crow::mustache::load("head.mstch").render(context);
       context["header"] = crow::mustache::load("header.mstch").render(context);
       context["navigation"] = crow::mustache::load("navigation.mstch").render(context);
       context["footer"] = crow::mustache::load("footer.mstch").render(context);
       context["body"] = "<p>Dzień dobry podróżniku. Prace trwają!</p>";
-      context["version"] = mrozigor::ApplicationVersion::get();
 
       crow::response response = crow::response(crow::mustache::load("main.mstch").render(context));
       response.add_header("Content-Type", "text/html; charset=utf-8");
@@ -44,6 +44,24 @@ int main()
       std::ifstream style("assets/css/grids-responsive-min.css", std::ios::binary);
       crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
       response.add_header("Content-Type", "text/css");
+      response.add_header("Content-Length", std::to_string(response.body.size()));
+      return response;
+  });
+
+  // TODO TEMPORARY
+  CROW_ROUTE(application, "/css/style.css")([](){
+      std::ifstream style("assets/css/style.css", std::ios::binary);
+      crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
+      response.add_header("Content-Type", "text/css");
+      response.add_header("Content-Length", std::to_string(response.body.size()));
+      return response;
+  });
+
+  // TODO TEMPORARY
+  CROW_ROUTE(application, "/images/header-logo.png")([](){
+      std::ifstream style("assets/images/header-logo.png", std::ios::binary);
+      crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
+      response.add_header("Content-Type", "image/png");
       response.add_header("Content-Length", std::to_string(response.body.size()));
       return response;
   });

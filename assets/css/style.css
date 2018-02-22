@@ -1,0 +1,24 @@
+.container {
+    margin: auto;
+}
+
+.header-logo {
+    margin: auto;
+}
+
+.content {
+    margin: 30px;
+    margin-bottom: 50px;
+}
+
+.footer {
+    margin: auto;
+    text-align: center;
+    color: #A0A0A0;
+}
+
+@media (min-width: 720px) {
+    .container {
+        width: 70%;
+    }
+}

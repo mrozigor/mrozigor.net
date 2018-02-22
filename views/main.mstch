@@ -5,8 +5,10 @@
         <div class="container">
             {{{header}}}
             {{{navigation}}}
-            {{{body}}}
+            <div class="content">
+                {{{body}}}
+            </div>
+            {{{footer}}}
         </div>
-        {{{footer}}}
     </body>
 </html>

@@ -1,6 +1,4 @@
 <footer class="footer">
     <hr />
-    <div class="container">
-        {{#version}}<p class="text-muted">{{version}}</p>{{/version}}
-    </div>
+    <p>2018 Igor Mróz - {{#version}}{{version}}{{/version}}</p>
 </footer>
