@@ -17,8 +17,23 @@
     color: #A0A0A0;
 }
 
+#toggle-menu {
+    width: 100%;
+    display: none;
+}
+
+#toggle-menu hr {
+    width: 95%;
+    height: 2px;
+    border: none;
+    background-color: black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 @media (min-width: 720px) {
     .container {
         width: 70%;
     }
 }
+

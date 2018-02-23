@@ -66,5 +66,32 @@ int main()
       return response;
   });
 
+  // TODO TEMPORARY
+  CROW_ROUTE(application, "/images/favicon.png")([](){
+      std::ifstream style("assets/images/favicon.png", std::ios::binary);
+      crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
+      response.add_header("Content-Type", "image/png");
+      response.add_header("Content-Length", std::to_string(response.body.size()));
+      return response;
+  });
+
+  // TODO TEMPORARY
+  CROW_ROUTE(application, "/js/script.js")([](){
+      std::ifstream style("assets/js/script.js", std::ios::binary);
+      crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
+      response.add_header("Content-Type", "aplication/javascript");
+      response.add_header("Content-Length", std::to_string(response.body.size()));
+      return response;
+  });
+
+  // TODO TEMPORARY
+  CROW_ROUTE(application, "/js/jquery.js")([](){
+      std::ifstream style("assets/js/jquery.js", std::ios::binary);
+      crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
+      response.add_header("Content-Type", "aplication/javascript");
+      response.add_header("Content-Length", std::to_string(response.body.size()));
+      return response;
+  });
+
   application.port(9449).multithreaded().run();
 }
