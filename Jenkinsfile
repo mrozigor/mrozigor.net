@@ -24,16 +24,16 @@ pipeline {
     stage('Archive') {
       steps {
         sh "tar --xz -cvf server_${env.BUILD_NUMBER}.tar.xz -C ${env.WORKSPACE}/build server views ../assets"
-        sh "cp ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz /home/mrozigor/domains/mrozigor.net/builds"
+        sh "cp ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz ${env.ARCHIVE_DIRECTORY}"
       }
     }
     stage('Deploy') {
       steps {
         sh "kill `cat /home/mrozigor/.mrozigor_net.pid` || true"
-        sh "cp ${env.WORKSPACE}/build/server /home/mrozigor/domains/mrozigor.net/"
-        sh "cp -r ${env.WORKSPACE}/build/views /home/mrozigor/domains/mrozigor.net/"
-        sh "cp -r ${env.WORKSPACE}/assets /home/mrozigor/domains/mrozigor.net/"
-        sh "/home/mrozigor/check_mrozigor_net_running"
+        sh "cp ${env.WORKSPACE}/build/server ${env.WEBPAGE_DIRECTORY}"
+        sh "cp -r ${env.WORKSPACE}/build/views ${env.WEBPAGE_DIRECTORY}"
+        sh "cp -r ${env.WORKSPACE}/assets ${env.WEBPAGE_DIRECTORY}"
+        sh "${env.WEBPAGE_START_SCRIPT}"
       }
     }
   }
