@@ -1,15 +1,22 @@
+#TODO FreeBSD section is now used for build server - maybe add some kind of BUILD_SERVER=ON/OFF variable?
+#TODO Add Catch2 and Test executable target
+
 ifeq (@(TUP_PLATFORM),freebsd)
 !cc = |> clang $(CFLAGS) -I/usr/local/include -c %f -o %o |> $(BUILD_DIR)/%B.o
 LIBS = -lc++ -lm -lboost_thread -lboost_system -lssl -lpthread #-ltcmalloc
 else
 !cc = |> gcc $(CFLAGS) -c %f -o %o |> $(BUILD_DIR)/%B.o
-LIBS = -lstdc++ -lboost_thread -lboost_system -lssl -lpthread #-ltcmalloc
+LIBS = -lstdc++ -lboost_thread -lboost_system -lssl -lpthread -ltcmalloc
 endif
 
 BUILD_DIR = build
-CFLAGS = -Wall -O2 -std=c++11
+CFLAGS = -Wall -O2 -std=c++14
 
 SOURCE_FILES = src/main.cpp
+SOURCE_FILES += src/controllers/Controller.cpp
+SOURCE_FILES += src/controllers/UsersController.cpp
+SOURCE_FILES += src/controllers/MainController.cpp
+SOURCE_FILES += src/models/Model.cpp
 
 : |> ./version_generation.sh |> src/version.hpp
 : foreach views/*.mstch |> cp %f %o |> $(BUILD_DIR)/views/%b

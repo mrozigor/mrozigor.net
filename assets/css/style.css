@@ -31,6 +31,15 @@
     margin-bottom: 5px;
 }
 
+.login-form {
+    margin: auto;
+    text-align: center;
+}
+
+.login-button {
+    background-color: black;
+}
+
 @media (min-width: 720px) {
     .container {
         width: 70%;

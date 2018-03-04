@@ -1,29 +1,27 @@
 #include "crow.hpp"
 #include "version.hpp"
+#include "controllers/UsersController.hpp"
+#include "controllers/MainController.hpp"
 
 int main()
 {
+  using namespace im;
   crow::SimpleApp application;
-  crow::mustache::set_base("views");
   crow::logger::setLogLevel(crow::LogLevel::Debug);
 
   CROW_ROUTE(application, "/")([](){
-      crow::mustache::context context;
-      context["title"] = "Strona główna";
-      context["description"] = "Strona prywatna Igora Mroza.";
-      context["author"] = "Igor Mróz";
-      context["keywords"] = "";
-      context["version"] = mrozigor::ApplicationVersion::get();
-      context["head"] = crow::mustache::load("head.mstch").render(context);
-      context["header"] = crow::mustache::load("header.mstch").render(context);
-      context["navigation"] = crow::mustache::load("navigation.mstch").render(context);
-      context["footer"] = crow::mustache::load("footer.mstch").render(context);
-      context["body"] = "<p>Dzień dobry podróżniku. Prace trwają!</p>";
+      controllers::MainController controller;
+      return controller.mainPage();
+  });
 
-      crow::response response = crow::response(crow::mustache::load("main.mstch").render(context));
-      response.add_header("Content-Type", "text/html; charset=utf-8");
-      response.add_header("Content-Length", std::to_string(response.body.size()));
-      return response;
+  CROW_ROUTE(application, "/login").methods("GET"_method)([](){
+      controllers::UsersController controller;
+      return controller.loginForm();
+  });
+
+  CROW_ROUTE(application, "/login").methods("POST"_method)([](){
+      //TODO HANDLE LOGIN AND RETURN TO MAIN PAGE
+      return "";
   });
 
   CROW_ROUTE(application, "/about")([](){
