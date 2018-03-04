@@ -22,7 +22,7 @@ SOURCE_FILES += src/models/Model.cpp
 : foreach views/*.mstch |> cp %f %o |> $(BUILD_DIR)/views/%b
 : foreach $(SOURCE_FILES) | src/version.hpp |> !cc |>
 ifeq (@(TUP_PLATFORM),freebpsd)
-: $(BUILD_DIR)/*.o |> clang -L/usr/local/lib %f -o %o $(LIBS) |> $(BUILD_DIR)/server
+: $(BUILD_DIR)/*.o |> clang -L/usr/local/lib -L/home/mrozigor/libs %f -o %o $(LIBS) |> $(BUILD_DIR)/server
 else
 : $(BUILD_DIR)/*.o |> gcc %f -o %o $(LIBS) |> $(BUILD_DIR)/server
 endif
