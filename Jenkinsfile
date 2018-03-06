@@ -18,7 +18,8 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh "./build/tests -r xml > test_results.xml"
+        sh "${env.WORKSPACE}/build/tests -r xml > ${env.WORKSPACE}/test_results.xml"
+        #TODO Parse results and show on Jenkins
       }
     }
     stage('Archive') {
