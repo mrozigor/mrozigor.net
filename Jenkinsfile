@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
+        sh "sed -i 's/BUILD_CI\s=\sFALSE/BUILD_CI\s=\sTRUE/' Tupfile"
         sh "tup init"
         sh "tup generate ${env.WORKSPACE}/build.sh"
         sh "${env.WORKSPACE}/build.sh"
@@ -17,8 +18,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        echo "TODO Test - add test compilation to tupfile and here execute test exec"
-        echo "TODO Execute xUnit publisher etc."
+        sh "./build/tests -r xml > test_results.xml"
       }
     }
     stage('Archive') {

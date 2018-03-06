@@ -1,28 +1,39 @@
-#TODO FreeBSD section is now used for build server - maybe add some kind of BUILD_SERVER=ON/OFF variable?
-#TODO Add Catch2 and Test executable target
-
-ifeq (@(TUP_PLATFORM),freebsd)
-!cc = |> clang $(CFLAGS) -I/usr/local/include -I/home/mrozigor/libs/include -c %f -o %o |> $(BUILD_DIR)/%B.o
-LIBS = -lc++ -lm -lboost_thread -lboost_system -lssl -lpthread #-ltcmalloc
-else
-!cc = |> gcc $(CFLAGS) -c %f -o %o |> $(BUILD_DIR)/%B.o
-LIBS = -lstdc++ -lboost_thread -lboost_system -lssl -lpthread -ltcmalloc
-endif
-
+BUILD_CI = FALSE
+BUILD_TESTS = TRUE
 BUILD_DIR = build
 CFLAGS = -Wall -O2 -std=c++14
 
-SOURCE_FILES = src/main.cpp
+ifeq ($(BUILD_CI),TRUE)
+    !cc = |> clang $(CFLAGS) -I/usr/local/include -I/home/mrozigor/libs/include -c %f -o %o |>
+    LIBS = -lc++ -lm -lboost_thread -lboost_system -lssl -lpthread #-ltcmalloc
+else
+    !cc = |> gcc $(CFLAGS) -c %f -o %o |>
+    LIBS = -lstdc++ -lboost_thread -lboost_system -lssl -lpthread -ltcmalloc
+endif
+
+MAIN_FILE = src/main.cpp
 SOURCE_FILES += src/controllers/Controller.cpp
 SOURCE_FILES += src/controllers/UsersController.cpp
 SOURCE_FILES += src/controllers/MainController.cpp
 SOURCE_FILES += src/models/Model.cpp
 
+TEST_FILES = tests/main_tests.cpp
+
 : |> ./version_generation.sh |> src/version.hpp
 : foreach views/*.mstch |> cp %f %o |> $(BUILD_DIR)/views/%b
-: foreach $(SOURCE_FILES) | src/version.hpp |> !cc |>
-ifeq (@(TUP_PLATFORM),freebpsd)
-: $(BUILD_DIR)/*.o |> clang -L/usr/local/lib -L/home/mrozigor/libs/lib %f -o %o $(LIBS) |> $(BUILD_DIR)/server
+: $(MAIN_FILE) | src/version.hpp |> !cc |> $(BUILD_DIR)/%B.o
+: foreach $(SOURCE_FILES) | src/version.hpp |> !cc |> $(BUILD_DIR)/%B.o {objects}
+ifeq ($(BUILD_CI),TRUE)
+    : $(BUILD_DIR)/*.o |> clang -L/usr/local/lib -L/home/mrozigor/libs/lib %f -o %o $(LIBS) |> $(BUILD_DIR)/server
 else
-: $(BUILD_DIR)/*.o |> gcc %f -o %o $(LIBS) |> $(BUILD_DIR)/server
+    : $(BUILD_DIR)/*.o |> gcc %f -o %o $(LIBS) |> $(BUILD_DIR)/server
+endif
+
+ifeq ($(BUILD_TESTS),TRUE)
+    : foreach $(TEST_FILES) |> !cc |> $(BUILD_DIR)/%B.o {test_objects}
+    ifeq ($(BUILD_CI),TRUE)
+        : {objects} {test_objects} |> clang -L/usr/local/lib -L/home/mrozigor/libs/lib %f -o %o $(LIBS) |> $(BUILD_DIR)/tests
+    else
+        : {objects} {test_objects} |> gcc %f -o %o $(LIBS) |> $(BUILD_DIR)/tests
+    endif
 endif
