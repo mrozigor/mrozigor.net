@@ -19,7 +19,7 @@ pipeline {
     stage('Test') {
       steps {
         sh "${env.WORKSPACE}/build/tests -r xml > ${env.WORKSPACE}/test_results.xml"
-        #TODO Parse results and show on Jenkins
+        //TODO Parse results and show on Jenkins
       }
     }
     stage('Archive') {
