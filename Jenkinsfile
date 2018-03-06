@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh "sed -i "" 's/BUILD_CI = FALSE/BUILD_CI = TRUE/' Tupfile"
+        sh "sed -i \"\" 's/BUILD_CI = FALSE/BUILD_CI = TRUE/' Tupfile"
         sh "tup init"
         sh "tup generate ${env.WORKSPACE}/build.sh"
         sh "${env.WORKSPACE}/build.sh"
