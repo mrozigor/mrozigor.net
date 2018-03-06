@@ -1,6 +1,15 @@
 pipeline {
   agent any
   stages {
+    options {
+      skipDefaultCheckout true
+    }
+    stage('Checkout') {
+      steps {
+        cleanWs()
+        checkout scm
+      }
+    }
     stage('Build') {
       steps {
         sh "sed -i \"\" 's/BUILD_CI = FALSE/BUILD_CI = TRUE/' Tupfile"
@@ -11,7 +20,7 @@ pipeline {
     }
     stage('Checks') {
       steps {
-        sh "cppcheck --library=${env.WORKSPACE}/std.cfg --suppress=missingInclude --suppress=*:${env.WORKSPACE}/src/crow.hpp --enable=all --inconclusive --template=\"{file},{line},{severity},{id},{message}\" ${env.WORKSPACE}/src 2> cppcheck.txt"
+        sh "cppcheck --library=${env.WORKSPACE}/std.cfg --suppress=missingInclude --suppress=*:${env.WORKSPACE}/src/crow.hpp --enable=all --inconclusive --template=\"{file},{line},{severity},{id},{message}\" ${env.WORKSPACE}/src > ${env.WORKSPACE}/cppcheck.txt"
         step([$class: 'WarningsPublisher', parserConfigurations: [[parserName: 'cpp', pattern: "cppcheck.txt"]], usePreviousBuildAsReference: true])
         echo "TODO Add Valgrind plugin assoon as it will be available in pipeline"
       }
@@ -36,11 +45,6 @@ pipeline {
         sh "cp -r ${env.WORKSPACE}/assets ${env.WEBPAGE_DIRECTORY}"
         sh "${env.WEBPAGE_START_SCRIPT}"
       }
-    }
-  }
-  post {
-    always {
-      cleanWs()
     }
   }
 }
