@@ -1,9 +1,9 @@
 pipeline {
   agent any
+  options {
+    skipDefaultCheckout true
+  }
   stages {
-    options {
-      skipDefaultCheckout true
-    }
     stage('Checkout') {
       steps {
         cleanWs()
