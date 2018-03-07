@@ -33,7 +33,7 @@ pipeline {
           allowMissing: false,
           alwaysLinkToLastBuild: false,
           keepAll: true,
-          reportDir: '${env.WORKSPACE}',
+          reportDir: '',
           reportFiles: 'test_results.html',
           reportName: "Catch2 Report"
         ])
