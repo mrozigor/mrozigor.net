@@ -27,8 +27,16 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh "${env.WORKSPACE}/build/tests -r xml > ${env.WORKSPACE}/test_results.xml"
-        //TODO Parse results and show on Jenkins
+        sh "${env.WORKSPACE}/build/tests --use-colour yes > ${env.WORKSPACE}/test_results"
+        sh "cat ${env.WORKSPACE}/test_results | ansi2html > ${env.WORKSPACE}/test_results.html"
+        publishHTML (target: [
+          allowMissing: false,
+          alwaysLinkToLastBuild: false,
+          keepAll: true,
+          reportDir: '${env.WORKSPACE}',
+          reportFiles: 'test_results.html',
+          reportName: "Catch2 Report"
+        ])
       }
     }
     stage('Archive') {
