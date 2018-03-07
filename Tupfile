@@ -1,7 +1,7 @@
 BUILD_CI = FALSE
 BUILD_TESTS = TRUE
 BUILD_DIR = build
-CFLAGS = -Wall -O2 -std=c++17
+CFLAGS = -Wall -O2 -std=c++14
 
 ifeq ($(BUILD_CI),TRUE)
     !cc = |> clang $(CFLAGS) -I/usr/local/include -I/home/mrozigor/libs/include -c %f -o %o |>
