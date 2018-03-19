@@ -1,16 +1,16 @@
-#ifndef IM_MODELS_MODEL
-#define IM_MODELS_MODEL
+#ifndef IM_DATABASE_DATABASE
+#define IM_DATABASE_DATABASE
 
 #include <pqxx/pqxx>
 
 namespace im
 {
-    namespace models
+    namespace database
     {
-        class Model
+        class Database
         {
         public:
-            Model();
+            Database();
 
         private:
             int temp;

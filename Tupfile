@@ -15,9 +15,11 @@ MAIN_FILE = src/main.cpp
 SOURCE_FILES += src/controllers/Controller.cpp
 SOURCE_FILES += src/controllers/UsersController.cpp
 SOURCE_FILES += src/controllers/MainController.cpp
-SOURCE_FILES += src/models/Model.cpp
+SOURCE_FILES += src/database/Database.cpp
+SOURCE_FILES += src/database/ArticleDAO.cpp
 
 TEST_FILES = tests/main_tests.cpp
+TEST_FILES += tests/ArticleDAOTest.cpp
 
 : |> ./version_generation.sh |> src/version.hpp
 : foreach views/*.mstch |> cp %f %o |> $(BUILD_DIR)/views/%b
