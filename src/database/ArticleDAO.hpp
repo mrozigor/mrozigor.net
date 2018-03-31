@@ -4,6 +4,7 @@
 #include <pqxx/pqxx>
 
 #include "Database.hpp"
+#include "../models/Article.hpp"
 
 namespace im
 {
@@ -12,10 +13,11 @@ namespace im
         class ArticleDAO : public Database
         {
         public:
-            ArticleDAO();
+            ArticleDAO(std::shared_ptr<Database> database);
+            std::vector<models::Article> getArticles();
 
         private:
-            int temp;
+            std::shared_ptr<Database> database;
         };
     }
 }

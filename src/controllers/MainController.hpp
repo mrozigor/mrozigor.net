@@ -2,6 +2,7 @@
 #define IM_CONTROLLERS_MAINCONTROLLER
 
 #include "Controller.hpp"
+#include "../database/ArticleDAO.hpp"
 
 namespace im
 {

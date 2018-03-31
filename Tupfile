@@ -5,10 +5,10 @@ CFLAGS = -Wall -O2 -std=c++14
 
 ifeq ($(BUILD_CI),TRUE)
     !cc = |> clang $(CFLAGS) -I/usr/local/include -I/home/mrozigor/libs/include -c %f -o %o |>
-    LIBS = -lc++ -lm -lboost_thread -lboost_system -lssl -lpthread #-ltcmalloc
+    LIBS = -lc++ -lm -lboost_thread -lboost_system -lssl -lpthread -lpqxx -lpq lconfig++ #-ltcmalloc
 else
     !cc = |> gcc $(CFLAGS) -c %f -o %o |>
-    LIBS = -lstdc++ -lboost_thread -lboost_system -lssl -lpthread -ltcmalloc
+    LIBS = -lstdc++ -lboost_thread -lboost_system -lssl -lpthread -ltcmalloc -lpqxx -lpq -lconfig++
 endif
 
 MAIN_FILE = src/main.cpp
@@ -17,6 +17,8 @@ SOURCE_FILES += src/controllers/UsersController.cpp
 SOURCE_FILES += src/controllers/MainController.cpp
 SOURCE_FILES += src/database/Database.cpp
 SOURCE_FILES += src/database/ArticleDAO.cpp
+SOURCE_FILES += src/database/NotConnectedException.cpp
+SOURCE_FILES += src/models/Article.cpp
 
 TEST_FILES = tests/main_tests.cpp
 TEST_FILES += tests/ArticleDAOTest.cpp
