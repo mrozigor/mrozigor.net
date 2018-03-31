@@ -2,6 +2,9 @@
 #define IM_DATABASE_DATABASE
 
 #include <pqxx/pqxx>
+#include <libconfig.h++>
+
+#include "NotConnectedException.hpp"
 
 namespace im
 {
@@ -11,9 +14,11 @@ namespace im
         {
         public:
             Database();
+            ~Database();
+            pqxx::result executeSQL(const std::string& sqlStatement);
 
         private:
-            int temp;
+            std::unique_ptr<pqxx::connection> connection;
         };
     }
 }
