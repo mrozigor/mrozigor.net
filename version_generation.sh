@@ -5,7 +5,7 @@ versionFileContent="#ifndef IM_APPLICATIONVERSION\n#define IM_APPLICATIONVERSION
 versionFallback="0.x-unknown"
 
 if [ -d .git ]; then
-	printf "$versionFileContent" "$(git describe --dirty --always --tags)" > $versionFileName
+	printf "$versionFileContent" "$(git describe --always --tags)" > $versionFileName
 else
 	printf "$versionFileContent" "$versionFallback" > $versionFileName
 fi
