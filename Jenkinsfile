@@ -28,7 +28,7 @@ pipeline {
     stage('Test') {
       steps {
         sh "mkdir ${env.WORKSPACE}/reports"
-        sh "${env.WORKSPACE}/build/tests --use-colour yes > ${env.WORKSPACE}/test_results"
+        sh "LD_LIBRARY_PATH=/home/mrozigor/libs/lib ${env.WORKSPACE}/build/tests --use-colour yes > ${env.WORKSPACE}/test_results"
         sh "cat ${env.WORKSPACE}/test_results | ansi2html > ${env.WORKSPACE}/reports/test_results.html"
         publishHTML (target: [
           allowMissing: false,
