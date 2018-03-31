@@ -4,6 +4,11 @@ im::models::Article::Article(const uint32_t& id, const std::string& title, const
 {
 }
 
+uint32_t im::models::Article::getId()
+{
+    return id;
+}
+
 std::string im::models::Article::getTitle()
 {
     return title;
