@@ -7,8 +7,10 @@
 }
 
 .content {
-    margin: 30px;
-    margin-bottom: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .footer {
@@ -38,6 +40,47 @@
 
 .login-button {
     background-color: black;
+}
+
+article {
+    background-color: #EEE;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+}
+
+.article-title {
+    font-weight: bold;
+    font-size: x-large;
+    text-align: center;
+}
+
+.article-body {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.article-tags {
+    margin-top: 10px;
+    font-size: small;
+}
+
+.article-tag {
+    display: inline-block;
+    font-style: italic;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.article-created {
+    margin-top: 1px;
+    font-size: small;
+}
+
+.article-created-date {
+    display: inline-block;
+    font-style: italic;
 }
 
 @media (min-width: 720px) {
