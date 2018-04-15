@@ -6,7 +6,7 @@ im::database::ArticleDAO::ArticleDAO(std::shared_ptr<Database> database) : datab
 
 std::vector<im::models::Article> im::database::ArticleDAO::getArticles()
 {
-    pqxx::result result = database->executeSQL("SELECT * FROM articles");
+    pqxx::result result = database->executeSQL("SELECT * FROM articles ORDER BY created DESC");
     std::vector<models::Article> articles;
 
     for (pqxx::result::const_iterator c = result.begin(); c != result.end(); ++c) {
