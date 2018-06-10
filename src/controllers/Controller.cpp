@@ -14,7 +14,8 @@ crow::response im::controllers::Controller::createResponse()
     context["description"] = "Głównie o moich zainteresowaniach i poglądach.";
     context["author"] = "Igor Mróz";
     context["keywords"] = ""; // TODO Some keywords common for all pages and then add when needed
-    context["version"] = im::ApplicationVersion::get();
+    context["version"] = ApplicationVersion::get();
+    context["baseUrl"] = urlManager.getBaseUrl();
     context["head"] = crow::mustache::load("head.mstch").render(context);
     context["header"] = crow::mustache::load("header.mstch").render(context);
     context["navigation"] = crow::mustache::load("navigation.mstch").render(context);

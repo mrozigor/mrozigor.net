@@ -4,7 +4,7 @@
 
 <nav class="pure-menu pure-menu-horizontal" id="menu">
     <ul class="pure-menu-list">
-        <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Strona główna</a></li>
+        <li class="pure-menu-item pure-menu-selected"><a href="{{baseUrl}}" class="pure-menu-link">Strona główna</a></li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Projekty</a></li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">Linki</a></li>
         <li class="pure-menu-item"><a href="#" class="pure-menu-link">O mnie</a></li>

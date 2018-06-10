@@ -3,12 +3,12 @@
 im::database::Database::Database()
 {
     libconfig::Config config;
-    config.readFile(".dbconfig");
-    std::string dbName = config.lookup("dbName");
-    std::string dbUser = config.lookup("dbUser");
-    std::string dbPassword = config.lookup("dbPassword");
-    std::string dbHost = config.lookup("dbHost");
-    std::string dbPort = config.lookup("dbPort");
+    config.readFile(".config");
+    std::string dbName = config.lookup("db.name");
+    std::string dbUser = config.lookup("db.user");
+    std::string dbPassword = config.lookup("db.password");
+    std::string dbHost = config.lookup("db.host");
+    std::string dbPort = config.lookup("db.port");
     std::string connectionStatement("dbname=" + dbName + " user=" + dbUser + " hostaddr=" + dbHost + " port=" + dbPort + " password=" + dbPassword);
     connection = std::make_unique<pqxx::connection>(connectionStatement);
 }

@@ -3,6 +3,7 @@
 
 #include "../crow.hpp"
 #include "../version.hpp"
+#include "../utils/UrlManager.hpp"
 
 namespace im
 {
@@ -18,6 +19,7 @@ namespace im
             crow::response createResponse();
 
             crow::mustache::context context;
+            utils::UrlManager urlManager;
         };
     }
 }
