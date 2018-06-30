@@ -48,7 +48,7 @@ pipeline {
     }
     stage('Deploy') {
       steps {
-        sh "kill `cat /home/mrozigor/.mrozigor_net.pid` || true"
+        sh "kill `pgrep server` || true"
         sh "cp ${env.WORKSPACE}/build/server ${env.WEBPAGE_DIRECTORY}"
         sh "cp -r ${env.WORKSPACE}/build/views ${env.WEBPAGE_DIRECTORY}"
         sh "cp -r ${env.WORKSPACE}/assets ${env.WEBPAGE_DIRECTORY}"
