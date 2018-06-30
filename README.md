@@ -1,1 +1,1 @@
-My own personal site based on Crow framework.
+Personal site based on Crow framework.
