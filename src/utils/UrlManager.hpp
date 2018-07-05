@@ -15,6 +15,8 @@ namespace im
             std::string getBaseUrl();
 
         private:
+            void loadBaseURL();
+
             std::string baseUrl;
         };
     }
