@@ -93,3 +93,12 @@ article {
     }
 }
 
+.social-link {
+    float: right;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.pure-menu-list {
+    width: 100%;
+}

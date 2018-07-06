@@ -65,6 +65,51 @@ int main()
   });
 
   // TODO TEMPORARY
+  CROW_ROUTE(application, "/images/github-logo.png")([](){
+      std::ifstream style("assets/images/github-logo.png", std::ios::binary);
+      crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
+      response.add_header("Content-Type", "image/png");
+      response.add_header("Content-Length", std::to_string(response.body.size()));
+      return response;
+    });
+
+  // TODO TEMPORARY
+  CROW_ROUTE(application, "/images/khanacademy-logo.png")([](){
+      std::ifstream style("assets/images/khanacademy-logo.png", std::ios::binary);
+      crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
+      response.add_header("Content-Type", "image/png");
+      response.add_header("Content-Length", std::to_string(response.body.size()));
+      return response;
+    });
+
+  // TODO TEMPORARY
+  CROW_ROUTE(application, "/images/linkedin-logo.png")([](){
+      std::ifstream style("assets/images/linkedin-logo.png", std::ios::binary);
+      crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
+      response.add_header("Content-Type", "image/png");
+      response.add_header("Content-Length", std::to_string(response.body.size()));
+      return response;
+    });
+
+  // TODO TEMPORARY
+  CROW_ROUTE(application, "/images/twitter-logo.png")([](){
+      std::ifstream style("assets/images/twitter-logo.png", std::ios::binary);
+      crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
+      response.add_header("Content-Type", "image/png");
+      response.add_header("Content-Length", std::to_string(response.body.size()));
+      return response;
+    });
+
+  // TODO TEMPORARY
+  CROW_ROUTE(application, "/images/stackexchange-logo.png")([](){
+      std::ifstream style("assets/images/stackexchange-logo.png", std::ios::binary);
+      crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
+      response.add_header("Content-Type", "image/png");
+      response.add_header("Content-Length", std::to_string(response.body.size()));
+      return response;
+    });
+
+  // TODO TEMPORARY
   CROW_ROUTE(application, "/images/favicon.png")([](){
       std::ifstream style("assets/images/favicon.png", std::ios::binary);
       crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
