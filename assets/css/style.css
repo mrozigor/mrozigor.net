@@ -87,7 +87,7 @@ article {
     font-style: italic;
 }
 
-@media (min-width: 720px) {
+@media all and (min-width: 720px) {
     .container {
         width: 70%;
     }
@@ -101,4 +101,16 @@ article {
 
 .pure-menu-list {
     width: 100%;
+}
+
+#social-links-menu {
+    margin-top: 10px;
+}
+
+.clearfix:after {
+    content: "";
+    visibility: hidden;
+    display: block;
+    height: 0;
+    clear: both;
 }
