@@ -1,10 +1,10 @@
 <ul class="pure-menu-list clearfix" id="social-links-menu">
     <!-- TODO MAKE VERSION FOR NARROWER SCREENS -->
-    <li class="pure-menu-item social-link"><a href="https://github.com/mrozigor" target="_blank"><img src="images/github-logo.png" /></a></li>
-    <li class="pure-menu-item social-link"><a href="https://twitter.com/mroz_igor" target="_blank"><img src="images/twitter-logo.png" /></a></li>
-    <li class="pure-menu-item social-link"><a href="https://www.linkedin.com/in/igor-mróz-5915a0167/" target="_blank"><img src="images/linkedin-logo.png" /></a></li>
-    <li class="pure-menu-item social-link"><a href="https://stackexchange.com/users/2660337/igor-mroz" target="_blank"><img src="images/stackexchange-logo.png" /></a></li>
-    <li class="pure-menu-item social-link"><a href="https://www.khanacademy.org/profile/mrozigor/" target="_blank"><img src="images/khanacademy-logo.png" /></a></li>
+    <li class="pure-menu-item social-link"><a href="https://github.com/mrozigor" target="_blank"><img src="images/github-logo.png" alt="Logo Github" /></a></li>
+    <li class="pure-menu-item social-link"><a href="https://twitter.com/mroz_igor" target="_blank"><img src="images/twitter-logo.png" alt="Logo Twitter" /></a></li>
+    <li class="pure-menu-item social-link"><a href="https://www.linkedin.com/in/igor-mróz-5915a0167/" target="_blank"><img src="images/linkedin-logo.png" alt="Logo LinkedIn" /></a></li>
+    <li class="pure-menu-item social-link"><a href="https://stackexchange.com/users/2660337/igor-mroz" target="_blank"><img src="images/stackexchange-logo.png" alt="Logo StackExchange" /></a></li>
+    <li class="pure-menu-item social-link"><a href="https://www.khanacademy.org/profile/mrozigor/" target="_blank"><img src="images/khanacademy-logo.png" alt="Logo Khan Academy" /></a></li>
 </ul>
 
 <hr />
