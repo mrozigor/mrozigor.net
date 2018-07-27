@@ -26,6 +26,9 @@ TEST_FILES += tests/ArticleDAOTest.cpp
 
 : |> ./version_generation.sh |> src/version.hpp
 : foreach views/*.mstch |> cp %f %o |> $(BUILD_DIR)/views/%b
+: foreach assets/css/*.css |> cp %f %o |> $(BUILD_DIR)/assets/css/%b
+: foreach assets/js/*.js |> cp %f %o |> $(BUILD_DIR)/assets/js/%b
+: foreach assets/images/* |> cp %f %o |> $(BUILD_DIR)/assets/images/%b
 : $(MAIN_FILE) | src/version.hpp |> !cc |> $(BUILD_DIR)/%B.o
 : foreach $(SOURCE_FILES) | src/version.hpp |> !cc |> $(BUILD_DIR)/%B.o {objects}
 ifeq ($(BUILD_CI),TRUE)
