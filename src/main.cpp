@@ -30,7 +30,7 @@ int main()
 
   // TODO TEMPORARY
   CROW_ROUTE(application, "/css/normalize.css")([](){
-      std::ifstream style("assets/css/grids-responsive-min.css", std::ios::binary);
+      std::ifstream style("assets/css/normalize.css", std::ios::binary);
       crow::response response = crow::response(std::string(std::istreambuf_iterator<char>(style), std::istreambuf_iterator<char>()));
       response.add_header("Content-Type", "text/css");
       response.add_header("Content-Length", std::to_string(response.body.size()));
