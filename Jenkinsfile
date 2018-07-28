@@ -42,7 +42,7 @@ pipeline {
     }
     stage('Archive') {
       steps {
-        sh "tar --xz -cvf server_${env.BUILD_NUMBER}.tar.xz -C ${env.WORKSPACE}/build server views ../assets"
+        sh "tar --xz -cvf server_${env.BUILD_NUMBER}.tar.xz -C ${env.WORKSPACE}/build server views assets"
         sh "cp ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz ${env.ARCHIVE_DIRECTORY}"
       }
     }
@@ -51,7 +51,7 @@ pipeline {
         sh "kill `pgrep server` || true"
         sh "cp ${env.WORKSPACE}/build/server ${env.WEBPAGE_DIRECTORY}"
         sh "cp -r ${env.WORKSPACE}/build/views ${env.WEBPAGE_DIRECTORY}"
-        sh "cp -r ${env.WORKSPACE}/assets ${env.WEBPAGE_DIRECTORY}"
+        sh "cp -r ${env.WORKSPACE}/build/assets ${env.WEBPAGE_DIRECTORY}"
         sh "${env.WEBPAGE_START_SCRIPT}"
       }
     }
