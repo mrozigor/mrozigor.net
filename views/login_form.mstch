@@ -1,13 +1,13 @@
-<form class="pure-form pure-form-aligned login-form" method="post" action="/login"><!-- TODO ADD URL PARAMETER IN CONTEXT -->
-    <fieldset>
-        <div class="pure-control-group">
-            <input id="email" type="email" placeholder="E-mail">
+<form class="login-form" method="post" action="/login"><!-- TODO ADD URL PARAMETER IN CONTEXT -->
+    <fieldset class="login-form__fieldset">
+        <div class="login-form__control-group">
+            <input class="login-form__input" type="email" placeholder="E-mail">
         </div>
 
-        <div class="pure-control-group">
-            <input id="password" type="password" placeholder="Hasło">
+        <div class="login-form__control-group">
+            <input class="login-form__input" type="password" placeholder="Hasło">
         </div>
 
-        <button type="submit" class="pure-button pure-button-primary login-button">Zaloguj</button>
+        <button type="submit" class="login-form__button">Zaloguj</button>
     </fieldset>
 </form>

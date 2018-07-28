@@ -1,8 +1,8 @@
 {{#articles}}
-<article>
-    <div class="article-title">{{title}}</div>
-    <div class="article-body">{{{body}}}</div>
-    <div class="article-tags">Tagi: {{#tags}}<div class="article-tag">{{tag}}</div>{{/tags}}</div>
-    <div class="article-created">Opublikowano: <div class="article-created-date">{{created}}</div></div>
+<article class="article">
+    <div class="article__title">{{title}}</div>
+    <div class="article__body">{{{body}}}</div>
+    <div class="article__tags">Tagi: {{#tags}}<div class="article__tag">{{tag}}</div>{{/tags}}</div>
+    <div class="article__created">Opublikowano: <div class="article__created-date">{{created}}</div></div>
 </article>
 {{/articles}}

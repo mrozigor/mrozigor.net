@@ -1,4 +1,4 @@
 <footer class="footer">
-    <hr />
-    <p>2018 Igor Mróz - {{#version}}{{version}}{{/version}}</p>
+    <hr class="footer__split-line" />
+    <p class="footer__note">2018 Igor Mróz - {{#version}}{{version}}{{/version}}</p>
 </footer>

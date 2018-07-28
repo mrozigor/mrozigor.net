@@ -1,90 +1,7 @@
-body {
-    background-color: white;
-}
-
 .container {
+    background-color: #FFF;
+    height: 100%;
     margin: auto;
-}
-
-.header-logo {
-    margin: auto;
-}
-
-.content {
-    margin-left: 10px;
-    margin-right: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.footer {
-    margin: auto;
-    text-align: center;
-    color: #A0A0A0;
-}
-
-#toggle-menu {
-    width: 100%;
-    display: none;
-}
-
-#toggle-menu hr {
-    width: 95%;
-    height: 2px;
-    border: none;
-    background-color: black;
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.login-form {
-    margin: auto;
-    text-align: center;
-}
-
-.login-button {
-    background-color: black;
-}
-
-article {
-    background-color: #EEE;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-radius: 20px;
-}
-
-.article-title {
-    font-weight: bold;
-    font-size: x-large;
-    text-align: center;
-}
-
-.article-body {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.article-tags {
-    margin-top: 10px;
-    font-size: small;
-}
-
-.article-tag {
-    display: inline-block;
-    font-style: italic;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.article-created {
-    margin-top: 1px;
-    font-size: small;
-}
-
-.article-created-date {
-    display: inline-block;
-    font-style: italic;
 }
 
 @media all and (min-width: 720px) {
@@ -93,21 +10,170 @@ article {
     }
 }
 
-.social-link {
+.header {
+    width: 100%;
+    text-align: center;
+}
+
+.header__logo {
+    max-width: 100%;
+    height: auto;
+    width: auto;
+}
+
+.navigation__social-links {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow: auto;
+}
+
+.navigation__social-link {
     float: right;
     padding-left: 10px;
     padding-right: 10px;
 }
 
-.pure-menu-list {
+.navigation__toggle-menu-button {
+    width: 100%;
+    height: 30px;
+    display: none;
+}
+
+.navigation__menu {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+@media all and (max-width: 719px) {
+    .navigation__menu {
+        text-align: center;
+    }
+}
+
+.navigation__menu-item {
+    display: inline-block;
+    padding: 5px 15px;
+}
+
+.navigation__menu-item--vertical {
+    display: block;
+}
+
+.navigation__menu-item:hover {
+    background-color: #EEE;
+}
+
+.navigation__menu-item--selected {
+    font-weight: bold;
+}
+
+.navigation__menu-link:link,
+.navigation__menu-link:visited,
+.navigation__menu-link:hover,
+.navigation__menu-link:active,
+.navigation__menu-link:visited:hover,
+.navigation__menu-link:visited:active {
+    color: #777;
+    text-decoration: none;
+}
+
+.navigation__split-line {
+    background-color: #AAA;
+    border: none;
+    height: 1px;
     width: 100%;
 }
 
-#social-links-menu {
-    margin-top: 10px;
+.content {
+    margin: 20px 10px;
 }
 
-.clearfix:after {
+.footer {
+    text-align: center;
+}
+
+.footer__split-line {
+    background-color: #AAA;
+    border: none;
+    height: 1px;
+    width: 100%;
+}
+
+.footer__note {
+    color: #777;
+    margin: 0;
+}
+
+.article {
+    background-color: #EEE;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.article__title {
+    font-weight: bold;
+    font-size: x-large;
+    text-align: center;
+}
+
+.article__body {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.article__tags {
+    margin-top: 10px;
+    font-size: small;
+}
+
+.article__tag {
+    display: inline-block;
+    font-style: italic;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.article__created {
+    margin-top: 1px;
+    font-size: small;
+}
+
+.article__created-date {
+    display: inline-block;
+    font-style: italic;
+}
+
+.login-form {
+    text-align: center;
+}
+
+.login-form__fieldset {
+    border: none;
+}
+
+.login-form__control-group {
+    margin-bottom: 10px;
+}
+
+.login-form__input {
+    height: 20px;
+    color: #777;
+    vertical-align: middle;
+}
+
+.login-form__button {
+    background-color: #000;
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+}
+
+.clearfix {
     content: "";
     visibility: hidden;
     display: block;

@@ -1,17 +1,21 @@
-$(window).on('resize', function() {
+displayMenuCorrectly = function () {
     if ($(window).width() < 400) { // TODO Refactor
-        $("#menu").removeClass("pure-menu-horizontal");
-        $("#menu").hide();
-        $("#toggle-menu").show();
+        $(".navigation__menu-item").addClass("navigation__menu-item--vertical");
+        $(".navigation__menu").hide();
+        $(".navigation__toggle-menu-button").show();
     } else {
-        $("#menu").addClass("pure-menu-horizontal");
-        $("#menu").show();
-        $("#toggle-menu").hide();
+        $(".navigation__menu-item").removeClass("navigation__menu-item--vertical");
+        $(".navigation__menu").show();
+        $(".navigation__toggle-menu-button").hide();
     }
-});
+}
+
+$(window).on('resize', displayMenuCorrectly);
 
 $(document).ready(function() {
-    $("#toggle-menu").click(function() {
-        $("#menu").toggle();
+    displayMenuCorrectly();
+
+    $(".navigation__toggle-menu-button").click(function() {
+        $(".navigation__menu").toggle();
     });
 });
