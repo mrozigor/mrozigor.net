@@ -13,10 +13,11 @@ endif
 
 MAIN_FILE = src/main.cpp
 SOURCE_FILES += src/controllers/Controller.cpp
-SOURCE_FILES += src/controllers/UsersController.cpp
 SOURCE_FILES += src/controllers/MainController.cpp
-SOURCE_FILES += src/database/Database.cpp
+SOURCE_FILES += src/controllers/ResourcesController.cpp
+SOURCE_FILES += src/controllers/UsersController.cpp
 SOURCE_FILES += src/database/ArticleDAO.cpp
+SOURCE_FILES += src/database/Database.cpp
 SOURCE_FILES += src/database/NotConnectedException.cpp
 SOURCE_FILES += src/models/Article.cpp
 SOURCE_FILES += src/utils/UrlManager.cpp
