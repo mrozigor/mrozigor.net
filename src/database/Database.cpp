@@ -1,4 +1,7 @@
+#include <libconfig.h++>
+
 #include "Database.hpp"
+#include "NotConnectedException.hpp"
 
 im::database::Database::Database()
 {

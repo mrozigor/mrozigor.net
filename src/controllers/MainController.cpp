@@ -1,4 +1,5 @@
 #include "MainController.hpp"
+#include "../database/ArticleDAO.hpp"
 
 im::controllers::MainController::MainController()
 {

@@ -1,5 +1,4 @@
-#ifndef IM_CONTROLLERS_USERSCONTROLLER
-#define IM_CONTROLLERS_USERSCONTROLLER
+#pragma once
 
 #include "Controller.hpp"
 
@@ -12,10 +11,7 @@ namespace im
         public:
             UsersController();
             crow::response loginForm();
-
-        private:
         };
     }
 }
 
-#endif

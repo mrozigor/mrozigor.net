@@ -1,3 +1,5 @@
+#include <pqxx/pqxx>
+
 #include "ArticleDAO.hpp"
 
 im::database::ArticleDAO::ArticleDAO(std::shared_ptr<Database> database) : database(database)

@@ -1,7 +1,4 @@
-#ifndef IM_DATABASE_ARTICLEDAO
-#define IM_DATABASE_ARTICLEDAO
-
-#include <pqxx/pqxx>
+#pragma once
 
 #include "Database.hpp"
 #include "../models/Article.hpp"
@@ -22,4 +19,3 @@ namespace im
     }
 }
 
-#endif

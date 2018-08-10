@@ -1,8 +1,7 @@
-#ifndef IM_MODELS_ARTICLE
-#define IM_MODELS_ARTICLE
+#pragma once
 
-#include <string>
 #include <cstdint>
+#include <string>
 #include <vector>
 
 namespace im
@@ -32,4 +31,3 @@ namespace im
     }
 }
 
-#endif

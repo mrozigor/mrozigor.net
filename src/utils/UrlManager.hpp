@@ -1,8 +1,6 @@
-#ifndef IM_UTILS_URLMANAGER
-#define IM_UTILS_URLMANAGER
+#pragma once
 
 #include <string>
-#include <libconfig.h++>
 
 namespace im
 {
@@ -22,4 +20,3 @@ namespace im
     }
 }
 
-#endif

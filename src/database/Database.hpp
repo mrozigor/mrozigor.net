@@ -1,10 +1,6 @@
-#ifndef IM_DATABASE_DATABASE
-#define IM_DATABASE_DATABASE
+#pragma once
 
 #include <pqxx/pqxx>
-#include <libconfig.h++>
-
-#include "NotConnectedException.hpp"
 
 namespace im
 {
@@ -23,4 +19,3 @@ namespace im
     }
 }
 
-#endif

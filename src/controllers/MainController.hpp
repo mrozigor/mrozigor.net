@@ -1,8 +1,6 @@
-#ifndef IM_CONTROLLERS_MAINCONTROLLER
-#define IM_CONTROLLERS_MAINCONTROLLER
+#pragma once
 
 #include "Controller.hpp"
-#include "../database/ArticleDAO.hpp"
 
 namespace im
 {
@@ -13,10 +11,7 @@ namespace im
         public:
             MainController();
             crow::response mainPage();
-
-        private:
         };
     }
 }
 
-#endif

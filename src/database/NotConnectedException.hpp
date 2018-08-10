@@ -1,5 +1,4 @@
-#ifndef IM_DATABASE_NOTCONNECTEDEXCEPTION
-#define IM_DATABASE_NOTCONNECTEDEXCEPTION
+#pragma once
 
 namespace im
 {
@@ -11,4 +10,3 @@ namespace im
     }
 }
 
-#endif

@@ -1,8 +1,6 @@
-#ifndef IM_CONTROLLERS_CONTROLLER
-#define IM_CONTROLLERS_CONTROLLER
+#pragma once
 
 #include "../crow.hpp"
-#include "../version.hpp"
 #include "../utils/UrlManager.hpp"
 
 namespace im
@@ -24,4 +22,3 @@ namespace im
     }
 }
 
-#endif

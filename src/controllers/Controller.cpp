@@ -1,4 +1,5 @@
 #include "Controller.hpp"
+#include "../version.hpp"
 
 im::controllers::Controller::Controller()
 {

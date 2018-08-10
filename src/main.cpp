@@ -1,7 +1,7 @@
-#include "crow.hpp"
-#include "version.hpp"
 #include "controllers/UsersController.hpp"
 #include "controllers/MainController.hpp"
+#include "crow.hpp"
+#include "version.hpp"
 
 int main()
 {
