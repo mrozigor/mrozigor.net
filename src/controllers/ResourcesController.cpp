@@ -22,7 +22,7 @@ crow::response im::controllers::ResourcesController::loadImage(const std::string
 
 crow::response im::controllers::ResourcesController::loadScript(const std::string& scriptName)
 {
-    crow::response response = loadFile("assets/js/" + scriptName);
+    crow::response response = loadFile("assets/js/" + scriptName); //TODO Load only on beginning. Load only files with given extension(?)
     response.add_header("Content-Type", "aplication/javascript");
     context["title"] = scriptName;
     return response;

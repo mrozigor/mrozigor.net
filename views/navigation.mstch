@@ -6,8 +6,6 @@
     <li class="navigation__social-link"><a href="https://www.khanacademy.org/profile/mrozigor/" target="_blank"><img src="images/khanacademy-logo.png" alt="Logo Khan Academy" /></a></li>
 </ul>
 
-<div class="clearfix"></div>
-
 <hr class="navigation__split-line" />
 
 <button class="navigation__toggle-menu-button"></button>

@@ -2,7 +2,7 @@
 <article class="article">
     <div class="article__title">{{title}}</div>
     <div class="article__body">{{{body}}}</div>
-    <div class="article__tags">Tagi: {{#tags}}<div class="article__tag">{{tag}}</div>{{/tags}}</div>
-    <div class="article__created">Opublikowano: <div class="article__created-date">{{created}}</div></div>
+    <div class="article__tags">Tagi:{{#tags}}<div class="article__tag">{{tag}}</div>{{/tags}}</div>
+    <div class="article__created">Opublikowano:<div class="article__created-date">{{created}}</div></div>
 </article>
 {{/articles}}

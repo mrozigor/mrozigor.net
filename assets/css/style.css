@@ -1,11 +1,10 @@
 body {
-    background-color: white;
+    background-color: #FFF;
 }
 
 .container {
     background-color: #FFF;
-    height: 100%;
-    margin: auto;
+    margin: 0 auto;
 }
 
 @media all and (min-width: 720px) {
@@ -15,8 +14,9 @@ body {
 }
 
 .header {
-    width: 100%;
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .header__logo {
@@ -29,11 +29,12 @@ body {
     margin: 0;
     padding: 0;
     list-style: none;
-    overflow: auto;
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: wrap;
 }
 
 .navigation__social-link {
-    float: right;
     padding-left: 10px;
     padding-right: 10px;
 }
@@ -45,25 +46,26 @@ body {
 }
 
 .navigation__menu {
-    width: 100%;
     margin: 0;
     padding: 0;
     list-style: none;
+    display: flex;
+    justify-content: flex-start;
 }
 
 @media all and (max-width: 719px) {
     .navigation__menu {
-        text-align: center;
+        justify-content: center;
     }
 }
 
 .navigation__menu-item {
-    display: inline-block;
     padding: 5px 15px;
 }
 
-.navigation__menu-item--vertical {
-    display: block;
+.navigation__menu--vertical {
+    flex-direction: column;
+    align-items: center;
 }
 
 .navigation__menu-item:hover {
@@ -117,6 +119,7 @@ body {
     padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    border: 1px solid #CCC;
 }
 
 .article__title {
@@ -134,10 +137,11 @@ body {
 .article__tags {
     margin-top: 10px;
     font-size: small;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .article__tag {
-    display: inline-block;
     font-style: italic;
     margin-left: 5px;
     margin-right: 5px;
@@ -146,19 +150,24 @@ body {
 .article__created {
     margin-top: 1px;
     font-size: small;
+    display: flex;
+    justify-content: flex-start;
 }
 
 .article__created-date {
-    display: inline-block;
     font-style: italic;
+    margin-left: 5px;
 }
 
 .login-form {
-    text-align: center;
+    display: flex;
+    justify-content: center;
 }
 
 .login-form__fieldset {
     border: none;
+    display: flex;
+    justify-content: center;
 }
 
 .login-form__control-group {
@@ -168,7 +177,6 @@ body {
 .login-form__input {
     height: 20px;
     color: #777;
-    vertical-align: middle;
 }
 
 .login-form__button {
@@ -176,12 +184,6 @@ body {
     color: #FFF;
     border: none;
     padding: 10px 20px;
+    margin: 0 auto;
 }
 
-.clearfix {
-    content: "";
-    visibility: hidden;
-    display: block;
-    height: 0;
-    clear: both;
-}
