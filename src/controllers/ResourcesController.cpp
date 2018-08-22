@@ -15,7 +15,13 @@ crow::response im::controllers::ResourcesController::loadStylesheet(const std::s
 crow::response im::controllers::ResourcesController::loadImage(const std::string& imageName)
 {
     crow::response response = loadFile("assets/images/" + imageName);
-    response.add_header("Content-Type", "image/png");
+    // TODO Add media types; refactor resources controller
+    std::string extension = imageName.substr(imageName.find(".") + 1);
+    if (extension == "svg") {
+        response.add_header("Content-Type", "image/" + extension + "+xml");
+    } else {
+        response.add_header("Content-Type", "image/" + extension);
+    }
     context["title"] = imageName;
     return response;
 }
