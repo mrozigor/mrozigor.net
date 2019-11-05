@@ -1,5 +1,7 @@
 #include "Controller.hpp"
+
 #include "../version.hpp"
+#include <ctime>
 
 im::controllers::Controller::Controller()
 {
@@ -12,11 +14,13 @@ im::controllers::Controller::~Controller()
 
 crow::response im::controllers::Controller::createResponse()
 {
+    time_t current = time(nullptr);
     context["description"] = "Głównie o moich zainteresowaniach i poglądach.";
     context["author"] = "Igor Mróz";
     context["keywords"] = ""; // TODO Some keywords common for all pages and then add when needed
     context["version"] = ApplicationVersion::get();
     context["baseUrl"] = urlManager.getBaseUrl();
+    context["year"] = std::localtime(&current)->tm_year + 1900;
     context["head"] = crow::mustache::load("head.mstch").render(context);
     context["header"] = crow::mustache::load("header.mstch").render(context);
     context["navigation"] = crow::mustache::load("navigation.mstch").render(context);
