@@ -1,0 +1,3 @@
+[submodule "crow"]
+	path = crow
+	url = mrozigor@s6.mydevil.net:crow

@@ -1,5 +1,6 @@
 build/
 .tup/
 src/version.hpp
+src/crow.hpp
 TAGS
 \.#*

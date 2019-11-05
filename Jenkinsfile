@@ -13,6 +13,7 @@ pipeline {
     stage('Build') {
       steps {
         sh "sed -i \"\" 's/BUILD_CI = FALSE/BUILD_CI = TRUE/' Tupfile"
+	sh "chmod +x ${env.WORKSPACE}/crow/amalgamate/merge_all.py"
         sh "tup init"
         sh "tup generate ${env.WORKSPACE}/build.sh"
         sh "${env.WORKSPACE}/build.sh"
