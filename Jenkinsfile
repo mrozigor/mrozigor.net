@@ -21,13 +21,13 @@ pipeline {
     }
     stage('Checks') {
       steps {
-        #sh "cppcheck --library=${env.WORKSPACE}/std.cfg --suppress=missingInclude --suppress=*:${env.WORKSPACE}/src/crow.hpp --enable=all --inconclusive --template=\"{file},{line},{severity},{id},{message}\" ${env.WORKSPACE}/src 2> ${env.WORKSPACE}/cppcheck.txt"
-	#recordIssues(
-	#	enabledForFailure: true,
-	#	aggregatingResults: true,
-	#	tool: cppCheck(pattern: 'cppcheck.txt', reportEncoding: 'UTF-8')
-	#)
-        #step([$class: 'WarningsPublisher', parserConfigurations: [[parserName: 'cpp', pattern: "cppcheck.txt"]], usePreviousBuildAsReference: true])
+        //sh "cppcheck --library=${env.WORKSPACE}/std.cfg --suppress=missingInclude --suppress=*:${env.WORKSPACE}/src/crow.hpp --enable=all --inconclusive --template=\"{file},{line},{severity},{id},{message}\" ${env.WORKSPACE}/src 2> ${env.WORKSPACE}/cppcheck.txt"
+	//recordIssues(
+	//	enabledForFailure: true,
+	//	aggregatingResults: true,
+	//	tool: cppCheck(pattern: 'cppcheck.txt', reportEncoding: 'UTF-8')
+	//)
+        //step([$class: 'WarningsPublisher', parserConfigurations: [[parserName: 'cpp', pattern: "cppcheck.txt"]], usePreviousBuildAsReference: true])
 	sh "cppcheck --library=${env.WORKSPACE}/std.cfg --suppress=missingInclude --suppress=*:${env.WORKSPACE}/src/crow.hpp --enable=all --inconclusive --xml --language=c++ ${env.WORKSPACE}/src 2> ${env.WORKSPACE}/cppcheck.xml"
 	publishCppcheck allowNoReport: true, ignoreBlankFiles: true, pattern: '**/cppcheck.xml'
         echo "TODO Add Valgrind plugin assoon as it will be available in pipeline"
