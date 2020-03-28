@@ -26,7 +26,8 @@ int main()
   });
 
   CROW_ROUTE(application, "/about")([](){
-      return "";
+      controllers::MainController controller;
+      return controller.aboutMePage();
   });
 
   CROW_ROUTE(application, "/css/<string>")([](const std::string& stylesheetName){

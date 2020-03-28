@@ -11,6 +11,7 @@ namespace im
         public:
             MainController();
             crow::response mainPage();
+            crow::response aboutMePage();
         };
     }
 }

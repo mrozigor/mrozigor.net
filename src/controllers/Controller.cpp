@@ -6,6 +6,8 @@
 im::controllers::Controller::Controller()
 {
     crow::mustache::set_base("views");
+    // TODO When initialize all constuctors at the beginning of application, then move this to proper controllers
+    navBarClasses = std::vector<std::string>(4, "");
 }
 
 im::controllers::Controller::~Controller()
@@ -21,6 +23,10 @@ crow::response im::controllers::Controller::createResponse()
     context["version"] = ApplicationVersion::get();
     context["baseUrl"] = urlManager.getBaseUrl();
     context["year"] = std::localtime(&current)->tm_year + 1900;
+    context["navBarClasses0"] = navBarClasses[0];
+    context["navBarClasses1"] = navBarClasses[1];
+    context["navBarClasses2"] = navBarClasses[2];
+    context["navBarClasses3"] = navBarClasses[3];
     context["head"] = crow::mustache::load("head.mstch").render(context);
     context["header"] = crow::mustache::load("header.mstch").render(context);
     context["navigation"] = crow::mustache::load("navigation.mstch").render(context);

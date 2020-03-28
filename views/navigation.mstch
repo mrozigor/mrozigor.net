@@ -12,10 +12,10 @@
 
 <nav>
     <ul class="navigation__menu navigation__menu--hide-vertical">
-        <li class="navigation__menu-item navigation__menu-item--selected"><a href="{{baseUrl}}" class="navigation__menu-link">Strona główna</a></li>
-        <li class="navigation__menu-item"><a href="#" class="navigation__menu-link">Projekty</a></li>
-        <li class="navigation__menu-item"><a href="#" class="navigation__menu-link">Linki</a></li>
-        <li class="navigation__menu-item"><a href="{{baseUrl}}about" class="navigation__menu-link">O mnie</a></li>
+        <li class="navigation__menu-item {{navBarClasses0}}"><a href="{{baseUrl}}" class="navigation__menu-link">Strona główna</a></li>
+        <li class="navigation__menu-item {{navBarClasses1}}"><a href="#" class="navigation__menu-link">Projekty</a></li>
+        <li class="navigation__menu-item {{navBarClasses2}}"><a href="#" class="navigation__menu-link">Linki</a></li>
+        <li class="navigation__menu-item {{navBarClasses3}}"><a href="{{baseUrl}}about" class="navigation__menu-link">O mnie</a></li>
     </ul>
 </nav>
 

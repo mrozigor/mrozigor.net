@@ -18,6 +18,7 @@ namespace im
 
             crow::mustache::context context;
             utils::UrlManager urlManager;
+            std::vector<std::string> navBarClasses;
         };
     }
 }

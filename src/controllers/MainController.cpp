@@ -25,7 +25,17 @@ crow::response im::controllers::MainController::mainPage()
     }
     context["title"] = "Strona główna";
     context["articles"] = std::move(articlesToRender);
+    navBarClasses[0] = "navigation__menu-item--selected";
     context["body"] = crow::mustache::load("articles.mstch").render(context);
+
+    return createResponse();
+}
+
+crow::response im::controllers::MainController::aboutMePage()
+{
+    context["title"] = "O mnie";
+    navBarClasses[3] = "navigation__menu-item--selected";
+    context["body"] = crow::mustache::load("about_me.mstch").render(context);
 
     return createResponse();
 }
