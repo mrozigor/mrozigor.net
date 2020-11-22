@@ -5,10 +5,10 @@ CFLAGS = -Wall -O2 -std=c++17
 
 ifeq ($(BUILD_CI),TRUE)
     !cc = |> clang $(CFLAGS) -I/usr/local/include -I/home/mrozigor/libs/include -c %f -o %o |>
-    LIBS = -lc++ -lm -lboost_thread -lboost_system -lssl -lpthread -lpqxx -lpq -lconfig++ #-ltcmalloc
+    LIBS = -lc++ -lm -lboost_thread -lboost_system -lssl -lpthread -lpqxx -lpq -lconfig++
 else
     !cc = |> gcc $(CFLAGS) -c %f -o %o |>
-    LIBS = -lstdc++ -lboost_thread -lboost_system -lssl -lpthread -lpqxx -lpq -lconfig++ #-ltcmalloc
+    LIBS = -lstdc++ -lboost_thread -lboost_system -lssl -lpthread -lpqxx -lpq -lconfig++ -lm -ltcmalloc
 endif
 
 MAIN_FILE = src/main.cpp

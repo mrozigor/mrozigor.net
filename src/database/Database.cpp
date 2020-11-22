@@ -18,9 +18,6 @@ im::database::Database::Database()
 
 im::database::Database::~Database()
 {
-    if (connection != nullptr && connection->is_open()) {
-        connection->disconnect();
-    }
 }
 
 pqxx::result im::database::Database::executeSQL(const std::string& sqlStatement)

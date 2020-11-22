@@ -10,7 +10,7 @@ namespace im
         {
         public:
             Database();
-            ~Database();
+            virtual ~Database();
             pqxx::result executeSQL(const std::string& sqlStatement);
 
         private:
