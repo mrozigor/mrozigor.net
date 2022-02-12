@@ -1,7 +1,5 @@
 <ul class="navigation__social-links">
     <li class="navigation__social-link"><a href="https://github.com/mrozigor" target="_blank"><img src="images/github-logo.png" alt="Logo Github" /></a></li>
-    <li class="navigation__social-link"><a href="https://twitter.com/mroz_igor" target="_blank"><img src="images/twitter-logo.png" alt="Logo Twitter" /></a></li>
-    <li class="navigation__social-link"><a href="https://www.linkedin.com/in/igor-mróz-5915a0167/" target="_blank"><img src="images/linkedin-logo.png" alt="Logo LinkedIn" /></a></li>
 </ul>
 
 <hr class="navigation__split-line" />
