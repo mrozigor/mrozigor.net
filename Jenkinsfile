@@ -3,9 +3,9 @@ pipeline {
   options {
     skipDefaultCheckout true
   }
-  parameters {
-    booleanParam defaultValue: false, name: 'buildOnlyWiki', description: 'Only wiki updated so just copy HTML file.'
-  }
+  //parameters {
+  //  booleanParam defaultValue: false, name: 'buildOnlyWiki', description: 'Only wiki updated so just copy HTML file.'
+  //}
   stages {
     stage('Checkout') {
       steps {
