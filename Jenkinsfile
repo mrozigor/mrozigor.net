@@ -65,13 +65,13 @@ pipeline {
       steps {
         script {
           if (params.buildOnlyWiki == false) {
-	    kill `pgrep server` || true
-	    cp ${env.WORKSPACE}/build/server ${env.WEBPAGE_DIRECTORY}
-	    cp -r ${env.WORKSPACE}/build/views ${env.WEBPAGE_DIRECTORY}
-	    cp -r ${env.WORKSPACE}/build/assets ${env.WEBPAGE_DIRECTORY}
-	    ${env.WEBPAGE_START_SCRIPT}"
+	    sh "kill `pgrep server` || true"
+	    sh "cp ${env.WORKSPACE}/build/server ${env.WEBPAGE_DIRECTORY}"
+	    sh "cp -r ${env.WORKSPACE}/build/views ${env.WEBPAGE_DIRECTORY}"
+	    sh "cp -r ${env.WORKSPACE}/build/assets ${env.WEBPAGE_DIRECTORY}"
+	    sh "${env.WEBPAGE_START_SCRIPT}"
 	  }
-	  cp ${env.WORKSPACE}/wiki.html ${env.WEBPAGE_DIRECTORY}
+	  sh "cp ${env.WORKSPACE}/wiki.html ${env.WEBPAGE_DIRECTORY}"
 	}
       }
     }
