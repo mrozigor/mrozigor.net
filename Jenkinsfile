@@ -1,10 +1,10 @@
 pipeline {
   agent any
-  parameters {
-    booleanParam defaultValue: false, name: 'buildOnlyWiki', description: 'Only wiki updated so just copy HTML file.'
-  }
   options {
     skipDefaultCheckout true
+  }
+  parameters {
+    booleanParam defaultValue: false, name: 'buildOnlyWiki', description: 'Only wiki updated so just copy HTML file.'
   }
   stages {
     stage('Checkout') {
