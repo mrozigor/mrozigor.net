@@ -71,10 +71,10 @@ pipeline {
 	sh "${env.WEBPAGE_START_SCRIPT}"
       }
     }
-    stage('Deploy wiki') {
-       steps {
-        sh "cp ${env.WORKSPACE}/wiki.html ${env.WEBPAGE_DIRECTORY}"
-      }
+    //stage('Deploy wiki') {
+    //   steps {
+    //    sh "cp ${env.WORKSPACE}/wiki.html ${env.WEBPAGE_DIRECTORY}"
+    //  }
     }
   }
 }
