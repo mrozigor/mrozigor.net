@@ -62,17 +62,18 @@ pipeline {
       }
     }
     stage('Deploy') {
+      when { expression { return params.buildOnlyWiki == false} }
       steps {
-        script {
-          if (params.buildOnlyWiki == false) {
-	    sh "kill `pgrep server` || true"
-	    sh "cp ${env.WORKSPACE}/build/server ${env.WEBPAGE_DIRECTORY}"
-	    sh "cp -r ${env.WORKSPACE}/build/views ${env.WEBPAGE_DIRECTORY}"
-	    sh "cp -r ${env.WORKSPACE}/build/assets ${env.WEBPAGE_DIRECTORY}"
-	    sh "${env.WEBPAGE_START_SCRIPT}"
-	  }
-	  sh "cp ${env.WORKSPACE}/wiki.html ${env.WEBPAGE_DIRECTORY}"
-	}
+	sh "kill `pgrep server` || true"
+	sh "cp ${env.WORKSPACE}/build/server ${env.WEBPAGE_DIRECTORY}"
+	sh "cp -r ${env.WORKSPACE}/build/views ${env.WEBPAGE_DIRECTORY}"
+	sh "cp -r ${env.WORKSPACE}/build/assets ${env.WEBPAGE_DIRECTORY}"
+	sh "${env.WEBPAGE_START_SCRIPT}"
+      }
+    }
+    stage('Deploy wiki') {
+       steps {
+        sh "cp ${env.WORKSPACE}/wiki.html ${env.WEBPAGE_DIRECTORY}"
       }
     }
   }
