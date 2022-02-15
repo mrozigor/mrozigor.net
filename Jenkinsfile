@@ -1,7 +1,7 @@
 pipeline {
   agent any
   parameters {
-    booleanParam(name: 'buildOnlyWiki', defaultValue: false, description: 'Only wiki updated so just copy HTML file.')
+    booleanParam defaultValue: false, name: 'buildOnlyWiki', description: 'Only wiki updated so just copy HTML file.'
   }
   stages {
     stage('Build') {
