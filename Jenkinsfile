@@ -1,11 +1,20 @@
 pipeline {
   agent any
-  //parameters {
-  //  booleanParam defaultValue: false, name: 'buildOnlyWiki', description: 'Only wiki updated so just copy HTML file.'
-  //}
+  parameters {
+    booleanParam defaultValue: false, name: 'buildOnlyWiki', description: 'Only wiki updated so just copy HTML file.'
+  }
+  options {
+    skipDefaultCheckout true
+  }
   stages {
+    stage('Checkout') {
+      steps {
+        cleanWs()
+        checkout scm
+      }
+    }
     stage('Build') {
-      //when { expression { return params.buildOnlyWiki == false} }
+      when { expression { return params.buildOnlyWiki == false} }
       steps {
         sh "sed -i \"\" 's/BUILD_CI = FALSE/BUILD_CI = TRUE/' Tupfile"
 	sh "chmod +x ${env.WORKSPACE}/crow/amalgamate/merge_all.py"
@@ -15,7 +24,7 @@ pipeline {
       }
     }
     stage('Checks') {
-      //when { expression { return params.buildOnlyWiki == false} }
+      when { expression { return params.buildOnlyWiki == false} }
       steps {
         //sh "cppcheck --library=${env.WORKSPACE}/std.cfg --suppress=missingInclude --suppress=*:${env.WORKSPACE}/src/crow.hpp --enable=all --inconclusive --template=\"{file},{line},{severity},{id},{message}\" ${env.WORKSPACE}/src 2> ${env.WORKSPACE}/cppcheck.txt"
 	//recordIssues(
@@ -30,7 +39,7 @@ pipeline {
       }
     }
     stage('Test') {
-      //when { expression { return params.buildOnlyWiki == false} }
+      when { expression { return params.buildOnlyWiki == false} }
       steps {
         sh "mkdir ${env.WORKSPACE}/reports"
         sh "LD_LIBRARY_PATH=/home/mrozigor/libs/lib ${env.WORKSPACE}/build/tests --use-colour yes > ${env.WORKSPACE}/test_results"
@@ -46,14 +55,14 @@ pipeline {
       }
     }
     stage('Archive') {
-      //when { expression { return params.buildOnlyWiki == false} }
+      when { expression { return params.buildOnlyWiki == false} }
       steps {
         sh "tar --xz -cvf server_${env.BUILD_NUMBER}.tar.xz -C ${env.WORKSPACE}/build server views assets"
         sh "cp ${env.WORKSPACE}/server_${env.BUILD_NUMBER}.tar.xz ${env.ARCHIVE_DIRECTORY}"
       }
     }
     stage('Deploy') {
-      //when { expression { return params.buildOnlyWiki == false} }
+      when { expression { return params.buildOnlyWiki == false} }
       steps {
 	sh "kill `pgrep server` || true"
 	sh "cp ${env.WORKSPACE}/build/server ${env.WEBPAGE_DIRECTORY}"
@@ -66,11 +75,6 @@ pipeline {
        steps {
         sh "cp ${env.WORKSPACE}/wiki.html ${env.WEBPAGE_DIRECTORY}"
       }
-    }
-  }
-  post {
-    always {
-      cleanWs()
     }
   }
 }
