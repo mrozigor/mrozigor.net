@@ -3,16 +3,7 @@ pipeline {
   parameters {
     booleanParam(name: 'buildOnlyWiki', defaultValue: false, description: 'Only wiki updated so just copy HTML file.')
   }
-  options {
-    skipDefaultCheckout true
-  }
   stages {
-    stage('Checkout') {
-      steps {
-        cleanWs()
-        checkout scm
-      }
-    }
     stage('Build') {
       when { expression { return params.buildOnlyWiki == false} }
       steps {
@@ -75,6 +66,11 @@ pipeline {
        steps {
         sh "cp ${env.WORKSPACE}/wiki.html ${env.WEBPAGE_DIRECTORY}"
       }
+    }
+  }
+  post {
+    always {
+      cleanWs()
     }
   }
 }
